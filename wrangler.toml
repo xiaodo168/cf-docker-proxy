@@ -1,0 +1,39 @@
+name = "cf-docker-proxy"
+compatibility_date = "2023-12-01"
+
+[dev]
+ip = "0.0.0.0"
+port = 8787
+local_protocol = "http"
+
+[env.vars]
+CUSTOM_DOMAIN = "fafe.dpdns.org"
+
+[env.dev.vars]
+MODE = "debug"
+TARGET_UPSTREAM = "https://registry-1.docker.io"
+CUSTOM_DOMAIN = "exmaple.com"
+
+[env.production]
+name = "cf-docker-proxy"
+# routes = [
+#   { pattern = "docker.fafe.dpdns.org", custom_domain = true },
+#   { pattern = "quay.fafe.dpdns.org", custom_domain = true },
+#   { pattern = "gcr.fafe.dpdns.org", custom_domain = true },
+#   { pattern = "k8s-gcr.fafe.dpdns.org", custom_domain = true },
+#   { pattern = "k8s.fafe.dpdns.org", custom_domain = true },
+#   { pattern = "ghcr.fafe.dpdns.org", custom_domain = true },
+#   { pattern = "cloudsmith.fafe.dpdns.org", custom_domain = true },
+# ]
+
+[env.production.vars]
+MODE = "production"
+TARGET_UPSTREAM = ""
+
+[env.staging]
+name = "cf-docker-proxy-staging"
+# route = { pattern = "docker-staging.fafe.dpdns.org", custom_domain = true }
+
+[env.staging.vars]
+MODE = "staging"
+TARGET_UPSTREAM = ""
